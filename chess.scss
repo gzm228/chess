@@ -1,0 +1,122 @@
+$w:600px;
+$r:20px;
+$number:15;
+@mixin center{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.box{
+  width: $w;
+  height: $w;
+  background-image: linear-gradient(60deg,
+          #ffca3b 0%,
+          #ff933b 100%);
+  box-shadow: 0 0.04rem 0.16rem 0
+  rgba(255, 142, 81, 0.3);
+  border-radius: 0.2rem;
+  @include center;
+}
+.success{
+  width: 400px;
+  height:400px;
+  @include center;
+  background-image: url("./img/1.gif");
+  background-size: cover;
+  transform: translate3d(-300%,0,0);
+  animation: through 100ms 1 ease-in forwards;
+  opacity: 0.2;
+}
+
+.replay{
+  width: 80px;
+  height:40px;
+  position: absolute;
+  left: 180px;
+  top: 500px;
+  transform: translate3d(0,300%,0);
+  animation: through 100ms 1 ease-in forwards;
+  opacity: 0.8;
+}
+.out{
+  width: 80px;
+  height:40px;
+  position: absolute;
+  left: 380px;
+  top: 500px;
+  transform: translate3d(0,300%,0);
+  animation: through 100ms 1 ease-in forwards;
+  opacity: 0.8;
+}
+.chess {
+  width: $r*2;
+  height: $r*2;
+  border-radius: 50%;
+  float:left;
+  position: relative;
+}
+.black{
+  background-image: linear-gradient(60deg,
+            #0e0e0e 0%,
+            #454343 100%);
+  box-shadow: 0 0.04rem 0.16rem 0
+  rgba(69, 69, 69, 0.3);
+  }
+.white{
+  background-image: linear-gradient(60deg,
+          #caccc5 0%,
+          #fffdfd 100%);
+  box-shadow: 0 0.04rem 0.16rem 0
+  rgba(255, 253, 253, 0.3);
+}
+.heng{
+  width: $w - $r*2;
+  height:2px;
+  background:black;
+  position: absolute;
+  left:$r;
+  transform: translate3d(-300%,0,0);
+  animation: through 100ms 1 ease-in forwards;
+}
+.shu{
+  height: $w - $r*2;
+  width:2px;
+  background:black;
+  position: absolute;
+  top:$r;
+  transform: translate3d(0,-300%,0);
+  animation: down 100ms 1 ease forwards;
+}
+@for $i from 1 through 15{
+  .heng:nth-of-type(#{$i}){
+    top:(2*$i - 1) * $r;
+    animation-delay: 100ms * $i;
+
+  }
+  .shu:nth-of-type(#{$i}){
+    left:(2*$i - 1) * $r;
+    animation-delay: 100ms * $i;
+  }
+}
+@keyframes down {
+  from{
+    transform: translate3d(0,-300%,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+
+}
+@keyframes through {
+  from{
+    transform: translate3d(-300%,0,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+
+}
