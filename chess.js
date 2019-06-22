@@ -109,15 +109,16 @@ function isSuccess(obj,coords) {
         box.off('click');
         $('<button>').addClass('replay').text('再玩一次').css({"background":'#ff933b',"border":'1px solid black'}).appendTo('.box');
         $('<button value="退出">').addClass('out').text('退出').css({"background":'#ff933b',"border":'1px solid black'}).appendTo('.box');
+        let replay=$('.replay');
+        let out =$('.out');
+        replay.on('click',function () {
+            location.reload(true);
+        });
+        out.on('click',function () {
+            window.close();
+        });
+
     }
    return max;
 }
-let replay=$('.replay');
-let out =$('.out');
-replay.on('click',function () {
-
-});
-   out.on('click',function () {
-
-    });
 });
